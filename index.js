@@ -1,7 +1,8 @@
 // Using moment.js - refer to documentation here:
 // https://momentjs.com/
-import moment from "moment";
-
+// import moment from "moment";
+let moment = require("moment");
+const momentRandom = require("moment-random");
 // Question 1. Parsing
 // Given the following strings:
 // Write a function to display each date in “standard” mm/dd/yyyy format.
@@ -97,3 +98,24 @@ let difference = differenceBetweenTwoDatesAndTime(
   "15:04"
 ); // should result in 3 days 2 hours 1 min
 console.log("the difference between these dates is", difference);
+
+// 5. Closest to Now
+// Write a function to generate two random dates and returns the date which is closest to right
+// now.
+
+function closestToNow() {
+  // generate 2 random dates
+  let date1 = momentRandom().format("MM/DD/YYYY");
+  let date2 = momentRandom().format("MM/DD/YYYY");
+  let today = moment().format("MM/DD/YYYY");
+
+  const diff = moment.duration(date1.diff(today));
+  // return date that is closest to moment.now
+  console.log(date1);
+  console.log(date2);
+  console.log(today);
+  console.log(diff);
+}
+
+closestToNow();
+// test this with a date that is right before today and tomorrows date
