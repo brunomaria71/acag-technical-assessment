@@ -104,18 +104,27 @@ console.log("the difference between these dates is", difference);
 // now.
 
 function closestToNow() {
-  // generate 2 random dates
-  let date1 = momentRandom().format("MM/DD/YYYY");
-  let date2 = momentRandom().format("MM/DD/YYYY");
-  let today = moment().format("MM/DD/YYYY");
+  let randomDate1 = moment(momentRandom());
+  let randomDate2 = moment(momentRandom());
 
-  const diff = moment.duration(date1.diff(today));
-  // return date that is closest to moment.now
-  console.log(date1);
-  console.log(date2);
-  console.log(today);
-  console.log(diff);
+  let timeDifferenceOfFirstRandomDate = moment(randomDate1).fromNow();
+  let timeDifferenceOfSecondRandomDate = moment(randomDate2).fromNow();
+
+  if (randomDate2.isBefore(randomDate1)) {
+    console.log(
+      `${timeDifferenceOfFirstRandomDate} < ${timeDifferenceOfSecondRandomDate}, the first random time is closest to the time from now, since `,
+      moment(randomDate1).format("MM/DD/YYYY"),
+      `is closer to today than`,
+      moment(randomDate2).format("MM/DD/YYYY")
+    );
+  } else {
+    console.log(
+      `${timeDifferenceOfFirstRandomDate} > ${timeDifferenceOfSecondRandomDate}, the second time is closest to the time from now, since`,
+      moment(randomDate2).format("MM/DD/YYYY"),
+      `is closer to today than`,
+      moment(randomDate1).format("MM/DD/YYYY")
+    );
+  }
 }
 
 closestToNow();
-// test this with a date that is right before today and tomorrows date
