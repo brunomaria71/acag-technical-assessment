@@ -185,3 +185,25 @@ function countDownToQatarNewYear(year) {
 }
 
 console.log(countDownToQatarNewYear(2026));
+
+// 8) Time Zone Difference
+// Given a date and two timezones write a function to return the hour difference between the
+// timezones
+// Example #1:
+// timezoneHourDifference("03/02/2022 03:45pm","America/Los_Angeles","Asia/Shanghai")
+// Result:: 8
+// Example #2:
+// timezoneHourDifference("03/22/2022 03:45pm","America/Los_Angeles","Asia/Shanghai")
+// Result:: 9
+function timezoneHourDifference(dateAndTime, timezone1, timezone2) {}
+
+// 9) All Days Of The Week of the Month
+// Given a year, month, and day-of-week, write a function to return all day-of-week of that month.
+// For example, if the input is 2022, 3, "Tuesday", then the result should be:
+// ['3/1/2022', '3/8/2022', '3/15/2022', '3/22/2022', '3/29/2022']
+function getAllSpecificDays(year, month, dayOfWeek) {}
+
+// 10) Imaginary World
+// Imagine that the world was different and the first day of the year is March 1st.
+// Given a date, write a function to return which week of the year it is.
+function getWeekOfYear(date) {}
