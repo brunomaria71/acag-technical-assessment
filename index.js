@@ -128,3 +128,27 @@ function closestToNow() {
 }
 
 closestToNow();
+
+// 6. Countdown Until 2026 in Miami
+// Write a function that would return the months, days, hours, minutes, and seconds
+// until the beginning of the year in Miami.
+
+function countDownToMiamiNewYear(year) {
+  let newYear = moment().year(year).month(0).startOf("month");
+  // .format("MM/DD/YYYY h:mm:ss "); // need to put miami timezone
+  let today = moment();
+  // .format("MM/DD/YYYY h:mm:ss");
+
+  let countdown = moment.duration(newYear.diff(today));
+
+  const months = countdown.months();
+  const days = countdown.days();
+  const hours = countdown.hours();
+  const minutes = countdown.minutes();
+  const seconds = countdown.seconds();
+
+  const result = `${months} Months, ${days} Days, ${hours} Hours, ${minutes} Minutes and ${seconds} seconds until New Year's Day ${year} in Miami`;
+  return result;
+}
+
+console.log(countDownToMiamiNewYear(2024));
