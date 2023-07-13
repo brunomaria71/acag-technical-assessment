@@ -134,14 +134,18 @@ closestToNow();
 // until the beginning of the year in Miami.
 
 function countDownToMiamiNewYear(year) {
-  let newYear = moment().year(year).month(0).startOf("month");
+  let newYear = moment()
+    .year(year)
+    .month(0)
+    .startOf("month")
+    .parseZone("YYYY-MM-DD HH:mm:ss", "America/New_York");
   // .format("MM/DD/YYYY h:mm:ss "); // need to put miami timezone
   let today = moment();
   // .format("MM/DD/YYYY h:mm:ss");
 
   let countdown = moment.duration(newYear.diff(today));
 
-  const months = countdown.months();
+  const months = countdown.months() + countdown.years() * 12;
   const days = countdown.days();
   const hours = countdown.hours();
   const minutes = countdown.minutes();
@@ -151,4 +155,33 @@ function countDownToMiamiNewYear(year) {
   return result;
 }
 
-console.log(countDownToMiamiNewYear(2024));
+console.log(countDownToMiamiNewYear(2026));
+
+// 7. Countdown Until 2026 in Qatar
+// Write a function that would return the months, days, hours, minutes, and seconds
+// until the beginning of the year in Qatar
+
+function countDownToQatarNewYear(year) {
+  let newYear = moment()
+    .year(year)
+    .month(0)
+    .startOf("month")
+    .parseZone("YYYY-MM-DD HH:mm:ss", "Asia/Qatar");
+
+  // .format("MM/DD/YYYY h:mm:ss "); // need to put Qatar timezone
+  let today = moment().parseZone("YYYY-MM-DD HH:mm:ss", "America/New_York");
+  // .format("MM/DD/YYYY h:mm:ss");
+
+  let countdown = moment.duration(newYear.diff(today));
+
+  const months = countdown.months() + countdown.years() * 12;
+  const days = countdown.days();
+  const hours = countdown.hours();
+  const minutes = countdown.minutes();
+  const seconds = countdown.seconds();
+
+  const result = `${months} Months, ${days} Days, ${hours} Hours, ${minutes} Minutes and ${seconds} seconds until New Year's Day ${year} in Qatar`;
+  return result;
+}
+
+console.log(countDownToQatarNewYear(2026));
