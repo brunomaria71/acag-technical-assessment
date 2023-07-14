@@ -197,23 +197,35 @@ console.log(countDownToQatarNewYear(2026));
 // timezoneHourDifference("03/22/2022 03:45pm","America/Los_Angeles","Asia/Shanghai")
 // Result:: 9
 function timezoneHourDifference(dateAndTime, timezone1, timezone2) {
-  // let today = moment().parseZone("YYYY-MM-DD HH:mm:ss", "America/New_York");
-  // return today;
-  // let diff = moment().parseZone(dateAndTime, timezone1);
+  let firstZone = moment(`${dateAndTime}`, "MM/DD/YYYY HH:mm").tz(timezone1);
+  let secondZone = moment(`${dateAndTime}`, "MM/DD/YYYY HH:mm").tz(timezone2);
+  let difference = firstZone.hour() - secondZone.hour();
+  let rounded = Math.abs(difference);
+  return rounded;
 }
 
-// console.log(
-//   timezoneHourDifference(
-//     "03/02/2022 03:45pm",
-//     "America/Los_Angeles",
-//     "Asia/Shanghai"
-//   )
-// );
+console.log(
+  timezoneHourDifference(
+    "03/02/2022 03:45pm",
+    "America/Los_Angeles",
+    "Asia/Shanghai"
+  )
+);
+
+console.log(
+  timezoneHourDifference(
+    "03/22/2022 03:45pm",
+    "America/Los_Angeles",
+    "Asia/Shanghai"
+  )
+);
 
 // 9) All Days Of The Week of the Month
 // Given a year, month, and day-of-week, write a function to return all day-of-week of that month.
 // For example, if the input is 2022, 3, "Tuesday", then the result should be:
 // ['3/1/2022', '3/8/2022', '3/15/2022', '3/22/2022', '3/29/2022']
+
+// moment-recur??
 function getAllSpecificDays(year, month, dayOfWeek) {}
 
 // 10) Imaginary World
