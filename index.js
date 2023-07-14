@@ -2,7 +2,8 @@
 // https://momentjs.com/
 // import moment from "moment";
 let moment = require("moment");
-const momentRandom = require("moment-random");
+let momentRandom = require("moment-random");
+let momentTz = require("moment-timezone");
 // Question 1. Parsing
 // Given the following strings:
 // Write a function to display each date in “standard” mm/dd/yyyy format.
@@ -138,9 +139,10 @@ function countDownToMiamiNewYear(year) {
     .year(year)
     .month(0)
     .startOf("month")
-    .parseZone("YYYY-MM-DD HH:mm:ss", "America/New_York");
+    .tz("America/New_York");
+  // .parseZone("YYYY-MM-DD HH:mm:ss", "America/New_York");
   // .format("MM/DD/YYYY h:mm:ss "); // need to put miami timezone
-  let today = moment();
+  let today = moment().tz("America/New_York");
   // .format("MM/DD/YYYY h:mm:ss");
 
   let countdown = moment.duration(newYear.diff(today));
@@ -151,7 +153,7 @@ function countDownToMiamiNewYear(year) {
   const minutes = countdown.minutes();
   const seconds = countdown.seconds();
 
-  const result = `${months} Months, ${days} Days, ${hours} Hours, ${minutes} Minutes and ${seconds} seconds until New Year's Day ${year} in Miami`;
+  const result = `${months} Months, ${days} Days, ${hours} Hours, ${minutes} Minutes and ${seconds} seconds until New Year's Day ${year} in Miami, which is ${newYear}. This is ${today} time in miami rn`;
   return result;
 }
 
@@ -162,14 +164,13 @@ console.log(countDownToMiamiNewYear(2026));
 // until the beginning of the year in Qatar
 
 function countDownToQatarNewYear(year) {
-  let newYear = moment()
-    .year(year)
-    .month(0)
-    .startOf("month")
-    .parseZone("YYYY-MM-DD HH:mm:ss", "Asia/Qatar");
+  let newYear = moment().year(year).month(0).startOf("month").tz("Asia/Qatar");
+  // .parseZone("YYYY-MM-DD HH:mm:ss");
 
   // .format("MM/DD/YYYY h:mm:ss "); // need to put Qatar timezone
-  let today = moment().parseZone("YYYY-MM-DD HH:mm:ss", "America/New_York");
+  let today = moment();
+  let todaysTimeZone = today.tz("Asia/Qatar");
+  console.log(`this is today in Asia ${todaysTimeZone}`);
   // .format("MM/DD/YYYY h:mm:ss");
 
   let countdown = moment.duration(newYear.diff(today));
@@ -180,7 +181,7 @@ function countDownToQatarNewYear(year) {
   const minutes = countdown.minutes();
   const seconds = countdown.seconds();
 
-  const result = `${months} Months, ${days} Days, ${hours} Hours, ${minutes} Minutes and ${seconds} seconds until New Year's Day ${year} in Qatar`;
+  const result = `${months} Months, ${days} Days, ${hours} Hours, ${minutes} Minutes and ${seconds} seconds until New Year's Day ${year} in Qatar, which is ${newYear}, today is ${today}`;
   return result;
 }
 
@@ -195,7 +196,19 @@ console.log(countDownToQatarNewYear(2026));
 // Example #2:
 // timezoneHourDifference("03/22/2022 03:45pm","America/Los_Angeles","Asia/Shanghai")
 // Result:: 9
-function timezoneHourDifference(dateAndTime, timezone1, timezone2) {}
+function timezoneHourDifference(dateAndTime, timezone1, timezone2) {
+  // let today = moment().parseZone("YYYY-MM-DD HH:mm:ss", "America/New_York");
+  // return today;
+  // let diff = moment().parseZone(dateAndTime, timezone1);
+}
+
+// console.log(
+//   timezoneHourDifference(
+//     "03/02/2022 03:45pm",
+//     "America/Los_Angeles",
+//     "Asia/Shanghai"
+//   )
+// );
 
 // 9) All Days Of The Week of the Month
 // Given a year, month, and day-of-week, write a function to return all day-of-week of that month.
