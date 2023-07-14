@@ -225,10 +225,37 @@ console.log(
 // For example, if the input is 2022, 3, "Tuesday", then the result should be:
 // ['3/1/2022', '3/8/2022', '3/15/2022', '3/22/2022', '3/29/2022']
 
-// moment-recur??
-function getAllSpecificDays(year, month, dayOfWeek) {}
+function getAllSpecificDays(year, month, dayOfWeek) {
+  let beginningOfMonth = moment([year, month - 1]).startOf("month");
+  let endOfMonth = moment(beginningOfMonth).endOf("month");
+
+  const days = [];
+  let currentDay = moment(beginningOfMonth).day(dayOfWeek);
+
+  for (let i = currentDay; i.isSameOrBefore(endOfMonth); i.add(7, "days")) {
+    days.push(i.format("M/D/YYYY"));
+  }
+
+  return days;
+}
+
+let year = 2022;
+let month = 3;
+let dayOfTheWeek = "Tuesday";
+console.log(getAllSpecificDays(year, month, dayOfTheWeek));
 
 // 10) Imaginary World
 // Imagine that the world was different and the first day of the year is March 1st.
 // Given a date, write a function to return which week of the year it is.
-function getWeekOfYear(date) {}
+function getWeekOfYear(date) {
+  let beginningOfYear = moment(date).month(2).startOf("month");
+
+  let newDate = moment(date).subtract(beginningOfYear.month(), "months");
+
+  return newDate.isoWeek();
+}
+
+let weekOfYear = getWeekOfYear("2022-07-10");
+let message = "the week of the new year is";
+
+console.log(message, weekOfYear);
