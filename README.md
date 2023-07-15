@@ -12,8 +12,8 @@ This repository contains my solution for the ACAG Technical Assessment.
 
 2. Install dependencies
 
-npm install
+   npm install
 
-3. Run code
+3. Run code in terminal
 
-node . or node index.js
+   node and name of file. For example: node challenge1.js
