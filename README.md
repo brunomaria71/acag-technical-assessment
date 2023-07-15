@@ -11,7 +11,8 @@ This repository contains my solution for the ACAG Technical Assessment.
    then cd into the project. cd acag-technical-assessment
 
 2. Install dependencies
-   Included dependencies are moment, moment-random (to generate a random date) and moment-timezone to easily input a specific timezone
+
+   > Included dependencies are moment, moment-random (to generate a random date) and moment-timezone to easily input a specific timezone
 
    command: npm install
 
